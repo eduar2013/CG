@@ -31,12 +31,14 @@
         <th scope="col">Id</th>
         <th scope="col">Nombre</th>
         <th scope="col">Descripci&oacute;n</th>
+        <th scope="col">Eliminar</th>
       </tr>
      </thead>
       <tr th:each="category : ${listCategories}">     
         <th scope="row" th:text="${category.id}"></th>
         <td th:text="${category.name}"></td>
         <td th:text="${category.description}"></td>
+        <td><a class = "btn btn-primary btn-xs" th:href="@{/delete/} + ${category.id}" th:text="'Eliminar'"></a></td>
       </tr>
     </table>
 </div>

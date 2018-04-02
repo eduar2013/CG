@@ -1,11 +1,14 @@
 package com.sura.cgapp.model.dao;
 
-import java.util.List;
+import java.io.Serializable;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.sura.cgapp.model.entity.CategoryEntity;
 
-public interface CategoryDaoInterface {
+@Repository
+public interface CategoryDaoInterface extends CrudRepository<CategoryEntity, Serializable>{
 	
-	public List<CategoryEntity> categoryFindAll();
-
+	
 }

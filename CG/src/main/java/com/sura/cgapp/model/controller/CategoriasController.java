@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sura.cgapp.model.dao.CategoryDaoInterface;
@@ -17,7 +18,7 @@ public class CategoriasController {
 	
 	@GetMapping("/categorias")
 	public String listarCategorias(Model model) {		
-		model.addAttribute("listCategories", categoryDao.categoryFindAll());
+		model.addAttribute("listCategories", categoryDao.findAll());
 		return "categorias";
 	}
 	
@@ -28,8 +29,15 @@ public class CategoriasController {
 	}
 	
 	@PostMapping("/newCategory")
-	public String createCategory(Model model) {
-		model.addAttribute("category",new CategoryEntity());
-		return "nuevaCategoria";
+	public String createCategory(CategoryEntity categoryEntity) {		
+		categoryDao.save(categoryEntity);
+		return "redirect:categorias";
+	}
+	
+	@GetMapping(value="/delete/{id}")
+	public String eliminarCategoria(@PathVariable(value="id") Integer id) {
+		CategoryEntity c = categoryDao.findOne(id);		
+		categoryDao.delete(c);
+		return "redirect:/categorias";
 	}
 }

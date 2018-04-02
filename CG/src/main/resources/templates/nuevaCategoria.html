@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<div class="container">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,17 +24,26 @@
   </div>
 </nav>
 
-<form action="#" th:action="@{/newCategory}"  th:object="${category}" method="post">
-	<div class="form-group">
-	<label for="name">Nombre</label>
-	<input type="text" class="form-control" id="name" placeholder="nombre" th:field="*{name}" />
+<div class="container">
+<div class="card py:4" >
+	<div class="card-header">
+	    Nueva Categoria
+	  </div>
+	
+		<div class="card-body">
+		<form action="#" th:action="@{/newCategory}"  th:object="${category}" method="post">
+			<div class="form-group">
+			<label for="name">Nombre</label>
+			<input type="text" class="form-control" id="name" placeholder="nombre" th:field="*{name}" />
+			</div>
+			<div class="form-group">
+			<label for="description">Descripci&oacute;n</label>
+			<input type="text" class="form-control" id="description" placeholder="descripci&oacute;n" th:field="*{description}" />
+			</div>
+			<button type="submit" class="btn btn-primary">Crear</button>
+		</form>
+		</div>
 	</div>
-	<div class="form-group">
-	<label for="description">Descripci&oacute;n</label>
-	<input type="text" class="form-control" id="description" placeholder="descripci&oacute;n" th:field="*{description}" />
-	</div>
-	<button type="submit" class="btn btn-primary">Crear</button>
-</form>
 </div>
 </body>
 </html>
