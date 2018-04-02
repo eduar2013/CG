@@ -25,6 +25,7 @@ public class CategoriasController {
 	@GetMapping("/newCategory")
 	public String newCategory(Model model) {
 		model.addAttribute("category",new CategoryEntity());
+		model.addAttribute("title","Nueva Categoria");
 		return "nuevaCategoria";
 	}
 	
@@ -32,6 +33,14 @@ public class CategoriasController {
 	public String createCategory(CategoryEntity categoryEntity) {		
 		categoryServices.save(categoryEntity);
 		return "redirect:categorias";
+	}
+	
+	@GetMapping(value="/newCategory/{id}")
+	public String editCategory(@PathVariable(value="id") Integer id, Model model) {
+		CategoryEntity categoryEntity = categoryServices.findOne(id);
+		model.addAttribute("category",categoryEntity);
+		model.addAttribute("title","Editar Categoria");
+		return "nuevaCategoria";
 	}
 	
 	@GetMapping(value="/delete/{id}")
