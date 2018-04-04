@@ -29,7 +29,4 @@ public class CategoryServices {
 	public void delete(Integer id) {
 		categoryDao.delete(findOne(id));
 	}
-	
-	
-
 }
