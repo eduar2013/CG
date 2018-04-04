@@ -1,16 +1,21 @@
 package com.sura.cgapp.model.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.sura.cgapp.model.entity.CategoryEntity;
 import com.sura.cgapp.model.services.CategoryServices;
 
 @Controller
+@SessionAttributes("categoryEntity")
 public class CategoriasController {
 	
 	@Autowired
@@ -30,8 +35,9 @@ public class CategoriasController {
 	}
 	
 	@PostMapping("/newCategory")
-	public String createCategory(CategoryEntity categoryEntity) {		
+	public String createCategory(@Valid CategoryEntity categoryEntity, Model model,SessionStatus status) {		
 		categoryServices.save(categoryEntity);
+		status.setComplete();
 		return "redirect:categorias";
 	}
 	
