@@ -20,8 +20,13 @@ public class SubCategoryServices {
 		return (List<SubCategoryEntity>) subCategoryDaoInterface.findAll();
 	}
 	
+	public void save(SubCategoryEntity subCategoryEntity) {
+		subCategoryDaoInterface.save(subCategoryEntity);
+	}
+	
+	
 	public List<CategoryEntity> getCategory() {
-		List<CategoryEntity> categoriasList = new ArrayList<CategoryEntity>();
+		List<CategoryEntity> categoriasList = new ArrayList<>();
 		
 		CategoryEntity categoryEntity = new CategoryEntity();
 		categoryEntity.setId(1);

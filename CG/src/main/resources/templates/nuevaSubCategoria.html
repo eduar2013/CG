@@ -23,9 +23,9 @@
 			<div class="form-group" >
 			<label for="category">Categoria</label>
 		     <select th:field="*{category}" class="custom-select" id="category">
-                         <option value=""> -- </option>
+                         <option value="-1"> -- </option>
                          <option th:each="categ : ${listCategories}"
-                            th:value="${categ.id}"
+                            th:value="${{categ}}"
                             th:utext="${categ.name}"/>
                   </select>
 			</div>

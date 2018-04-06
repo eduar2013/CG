@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sura.cgapp.model.entity.SubCategoryEntity;
 import com.sura.cgapp.model.services.SubCategoryServices;
@@ -27,5 +28,11 @@ public class SubCategoryController {
 		model.addAttribute("listCategories",subCategoryServices.getCategory());
 		model.addAttribute("title","Nueva SubCategoria");
 		return "nuevaSubCategoria";
+	}
+	
+	@PostMapping("/newSubCategory")
+	public String createSubCategory(SubCategoryEntity subCategoryEntity, Model model) {		
+		subCategoryServices.save(subCategoryEntity);
+		return "redirect:subcategories";
 	}
 }
