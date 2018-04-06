@@ -45,10 +45,10 @@ public class SubCategoryEntity implements Serializable{
 		this.defaultPrice = defaultPrice;
 	}
 	
-	public CategoryEntity getCategoria() {
+	public CategoryEntity getCategory() {
 		return category;
 	}
-	public void setCategoria(CategoryEntity categoria) {
+	public void setCategory(CategoryEntity categoria) {
 		this.category = categoria;
 	}
 

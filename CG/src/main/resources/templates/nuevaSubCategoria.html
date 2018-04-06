@@ -5,20 +5,29 @@
 
 <header th:replace="layout/layout :: header"></header>
 <div class="container py-4">
-<div class="card"  >
+<div class="card" >
 	<div class="card-header">
 	    <span th:text="${title}"></span>
 	  </div>
 	
 		<div class="card-body">
-		<form action="#" th:action="@{/newCategory}"  th:object="${category}" method="post">
+		<form action="#" th:action="@{/newSubCategory}"  th:object="${subcategory}" method="post">
 			<div class="form-group">
 			<label for="name">Nombre</label>
 			<input type="text" class="form-control" id="name" placeholder="nombre" th:field="*{name}" />
 			</div>
 			<div class="form-group">
-			<label for="description">Descripci&oacute;n</label>
-			<input type="text" class="form-control" id="description" placeholder="descripci&oacute;n" th:field="*{description}" />
+			<label for="defaultPrice">Valor por Defecto</label>
+			<input type="text" class="form-control" id="defaultPrice" placeholder="valor por defecto" th:field="*{defaultPrice}" />
+			</div>		
+			<div class="form-group" >
+			<label for="category">Categoria</label>
+		     <select th:field="*{category}" class="custom-select" id="category">
+                         <option value=""> -- </option>
+                         <option th:each="categ : ${listCategories}"
+                            th:value="${categ.id}"
+                            th:utext="${categ.name}"/>
+                  </select>
 			</div>
 			<button type="submit" class="btn btn-primary">Crear</button>
 			
