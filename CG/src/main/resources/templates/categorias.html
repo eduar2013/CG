@@ -4,28 +4,38 @@
 <body>
 
 <header th:replace="layout/layout :: header"></header>
-<div class="container">
+<div class="container py-4">
 
-    <h2>Categorias</h2>
-    <a th:href="@{/newCategory}">Nueva</a>
-    <table class="table table-hover">
-     <thead class="thead-dark">
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripci&oacute;n</th>
-        <th scope="col">Editar</th>
-        <th scope="col">Eliminar</th>
-      </tr>
-     </thead>
-      <tr th:each="category : ${listCategories}">     
-        <th scope="row" th:text="${category.id}"></th>
-        <td th:text="${category.name}"></td>
-        <td th:text="${category.description}"></td>
-        <td><a class = "btn btn-primary btn-xs" th:href="@{/newCategory/} + ${category.id}" th:text="'Editar'"></a></td>
-        <td><a class = "btn btn-danger btn-xs" th:href="@{/delete/} + ${category.id}" th:text="'Eliminar'"></a></td>
-      </tr>
-    </table>
+	<div class="card">
+	
+	<div class="card-header">
+	    <span th:text="${title}"></span>
+	</div>
+	
+	<div class="card-body">
+	    <a class="btn btn-outline-primary btn-sm" th:href="@{/newCategory}">Nueva</a>
+	    <table class="table table-hover table-bordered table-sm">
+	     <thead class="thead-dark">
+	      <tr>
+	        <th scope="col">Id</th>
+	        <th scope="col"></th>	 
+	        <th scope="col">Nombre</th>	 
+	        <th scope="col">Descripcion</th>	 
+	        <th scope="col">Editar</th>
+	        <th scope="col">Eliminar</th>
+	      </tr>
+	     </thead>
+	      <tr th:each="category : ${listCategories}">     
+	        <th scope="row" th:text="${category.id}"></th>
+	        <td><img th:src="@{'/uploads/' + ${category.icon}}"/></td>
+	        <td th:text="${category.name}"></td>
+	        <td th:text="${category.description}"></td>
+	        <td><a class = "btn btn-primary btn-xs" th:href="@{/newCategory/} + ${category.id}" th:text="'Editar'"></a></td>
+	        <td><a class = "btn btn-danger btn-xs" th:href="@{/delete/} + ${category.id}" th:text="'Eliminar'"></a></td>
+	      </tr>
+	    </table>
+	 </div>	    
+    </div>
 </div>
 
 <footer th:replace="layout/layout :: footer"></footer>

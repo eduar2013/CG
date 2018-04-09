@@ -13,7 +13,8 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Descripci&oacute;n</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Valor Por Defecto</th>
         <th scope="col">Editar</th>
         <th scope="col">Eliminar</th>
       </tr>
@@ -21,6 +22,7 @@
       <tr th:each="subcategory : ${listSubCategories}">     
         <th scope="row" th:text="${subcategory.id}"></th>
         <td th:text="${subcategory.name}"></td>
+         <td th:text="${subcategory.category.name}"></td>
         <td th:text="${subcategory.defaultPrice}"></td>
         <td><a class = "btn btn-primary btn-xs" th:href="@{/newSubCategory/} + ${subcategory.id}" th:text="'Editar'"></a></td>
         <td><a class = "btn btn-danger btn-xs" th:href="@{/deleteSubCategory/} + ${subcategory.id}" th:text="'Eliminar'"></a></td>

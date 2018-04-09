@@ -24,6 +24,7 @@ public class CategoryEntity implements Serializable{
 	private int id;	
 	private String name;
 	private String description;
+	private String icon;
 	
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL	)
 	private List<SubCategoryEntity> subcategories;
@@ -55,5 +56,13 @@ public class CategoryEntity implements Serializable{
 	}
 	public void setSubcategories(List<SubCategoryEntity> subcategories) {
 		this.subcategories = subcategories;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}	
 }

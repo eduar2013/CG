@@ -1,5 +1,10 @@
 package com.sura.cgapp.model.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sura.cgapp.model.entity.CategoryEntity;
 import com.sura.cgapp.model.services.CategoryServices;
@@ -36,7 +43,21 @@ public class CategoriasController {
 	}
 	
 	@PostMapping("/newCategory")
-	public String createCategory(@Valid CategoryEntity categoryEntity, Model model,SessionStatus status) {		
+	public String createCategory(@Valid CategoryEntity categoryEntity, Model model, @RequestParam("file") MultipartFile icon, SessionStatus status) {		
+		
+		if(!icon.isEmpty()) {
+			Path resourceDirectory = Paths.get("src//main//resources//static//uploads");
+			String rootPath = resourceDirectory.toFile().getAbsolutePath();
+			try {
+				byte[] bytes = icon.getBytes();
+				Path rutaCompleta = Paths.get(rootPath + "//" + icon.getOriginalFilename());
+				Files.write(rutaCompleta, bytes);
+				categoryEntity.setIcon(icon.getOriginalFilename());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}			
+		}
+		
 		categoryServices.save(categoryEntity);
 		status.setComplete();
 		return "redirect:categorias";
