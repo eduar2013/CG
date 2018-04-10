@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sura.cgapp.model.entity.CategoryEntity;
 import com.sura.cgapp.model.services.CategoryServices;
@@ -36,9 +37,10 @@ public class CategoriasController {
 	}
 	
 	@PostMapping("/newCategory")
-	public String createCategory(@Valid CategoryEntity categoryEntity, Model model,SessionStatus status) {		
+	public String createCategory(@Valid CategoryEntity categoryEntity, Model model,RedirectAttributes flash, SessionStatus status) {		
 		categoryServices.save(categoryEntity);
 		status.setComplete();
+		flash.addFlashAttribute("success", "Categoria creada con exito!");
 		return "redirect:categorias";
 	}
 	
