@@ -11,7 +11,10 @@
  	<span th:if="${not page.hashPrevious}">Anterior</span>
  	<a th:if="${page.hashPrevious}" th:href="@{${page.url}(page=${page.paginaActual - 2})}">Anterior</a>
  </li>
- <li></li>
+ <li th:each="item : ${page.pageItems}">
+ 	<span th:if="${item.blActual}" th:text="${item.numberPage}"></span>
+ 	<a th:if="${not item.blActual}" th:href="@{${page.url}(page=${item.numberPage-1})}" th:text="${item.numberPage}"></a>
+ </li>
  <li>
 	<span th:if="${not page.hashNext}">Siguiente</span>
  	<a th:if="${page.hashNext}" th:href="@{${page.url}(page=${page.paginaActual})}">Siguiente</a>

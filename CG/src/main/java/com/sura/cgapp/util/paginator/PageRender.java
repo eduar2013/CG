@@ -30,8 +30,8 @@ public class PageRender<T> {
 		int desde  = 0;
 		int hasta = totalPages;
 		
-		for(int i = desde;i < hasta; i++) {
-			pageItems.add(new PageItem(desde+1,paginaActual == desde+1));
+		for(int i = desde+1;i <= hasta; i++) {
+			pageItems.add(new PageItem(desde+i,paginaActual == desde+i));
 		}
 	}
 
