@@ -49,7 +49,7 @@ public class PageRender<T> {
 		return pageItems;
 	}
 	
-	public boolean isFirs() {
+	public boolean isFirst() {
 		return page.isFirst();
 	}
 	
