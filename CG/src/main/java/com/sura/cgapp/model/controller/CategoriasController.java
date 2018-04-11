@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sura.cgapp.model.entity.CategoryEntity;
 import com.sura.cgapp.model.services.CategoryServices;
@@ -43,7 +44,7 @@ public class CategoriasController {
 	}
 	
 	@PostMapping("/newCategory")
-	public String createCategory(@Valid CategoryEntity categoryEntity, Model model, @RequestParam("file") MultipartFile icon, SessionStatus status) {		
+	public String createCategory(@Valid CategoryEntity categoryEntity, Model model, @RequestParam("file") MultipartFile icon, RedirectAttributes flash, SessionStatus status) {		
 		
 		if(!icon.isEmpty()) {
 			Path resourceDirectory = Paths.get("src//main//resources//static//uploads");
@@ -55,11 +56,12 @@ public class CategoriasController {
 				categoryEntity.setIcon(icon.getOriginalFilename());
 			} catch (IOException e) {
 				e.printStackTrace();
-			}			
+			}
 		}
-		
+
 		categoryServices.save(categoryEntity);
 		status.setComplete();
+		flash.addFlashAttribute("success", "Categoria creada con exito!");
 		return "redirect:categorias";
 	}
 	

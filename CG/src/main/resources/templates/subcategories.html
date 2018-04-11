@@ -28,6 +28,7 @@
         <td><a class = "btn btn-danger btn-xs" th:href="@{/deleteSubCategory/} + ${subcategory.id}" th:text="'Eliminar'"></a></td>
       </tr>
     </table>
+    <nav th:replace="paginator_nav :: paginator"></nav>
 </div>
 
 <footer th:replace="layout/layout :: footer"></footer>
