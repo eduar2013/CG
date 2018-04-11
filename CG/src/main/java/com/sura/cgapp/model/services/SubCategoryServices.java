@@ -3,6 +3,8 @@ package com.sura.cgapp.model.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.sura.cgapp.model.dao.CategoryDaoInterface;
@@ -23,8 +25,14 @@ public class SubCategoryServices {
 		return subCategoryDaoInterface.findOne(id);
 	}
 	
+
+	
 	public List<SubCategoryEntity> findAll(){
 		return (List<SubCategoryEntity>) subCategoryDaoInterface.findAll();
+	}
+	
+	public Page<SubCategoryEntity> findAll(Pageable pageable){
+		return subCategoryDaoInterface.findAll(pageable);
 	}
 	
 	public void save(SubCategoryEntity subCategoryEntity) {

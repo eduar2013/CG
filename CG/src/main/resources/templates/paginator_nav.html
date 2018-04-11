@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="paginator">
+<ul>
+ <li>
+ 	<span th:if="${page.isFirs}">Primera</span>
+ 	<a th:if="${not page.isFirs}" th:href="@{${page.url}(page=0)}">Primera</a>
+ </li>
+ <li></li>
+ <li></li>
+ <li></li>
+ <li>
+ 	<span th:if="${page.islast}">Ultima</span>
+ 	<a th:if="${not page.islast}" th:href="@{${page.url}(page=${page.totalPaginas - 1})}">Ultima</a>
+ </li>
+</ul>
+</nav>
+</body>
+</html>
