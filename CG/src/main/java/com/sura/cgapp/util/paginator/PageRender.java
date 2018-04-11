@@ -25,6 +25,8 @@ public class PageRender<T> {
 		this.totalPages = page.getTotalPages();
 		this.paginaActual = page.getNumber() + 1;
 		
+		
+		
 		int desde  = 0;
 		int hasta = totalPages;
 		
@@ -61,7 +63,7 @@ public class PageRender<T> {
 		return page.hasNext();
 	}
 	
-	public boolean isHashPrevius() {
+	public boolean isHashPrevious() {
 		return page.hasPrevious();
 	}
 	

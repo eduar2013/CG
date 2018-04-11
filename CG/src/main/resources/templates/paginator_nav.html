@@ -4,15 +4,21 @@
 <nav th:fragment="paginator">
 <ul>
  <li>
- 	<span th:if="${page.isFirs}">Primera</span>
- 	<a th:if="${not page.isFirs}" th:href="@{${page.url}(page=0)}">Primera</a>
+ 	<span th:if="${page.first}">Primera</span>
+ 	<a th:if="${not page.first}" th:href="@{${page.url}(page=0)}">Primera</a>
+ </li>
+ <li>
+ 	<span th:if="${not page.hashPrevious}">Anterior</span>
+ 	<a th:if="${page.hashPrevious}" th:href="@{${page.url}(page=${page.paginaActual - 2})}">Anterior</a>
  </li>
  <li></li>
- <li></li>
- <li></li>
  <li>
- 	<span th:if="${page.islast}">Ultima</span>
- 	<a th:if="${not page.islast}" th:href="@{${page.url}(page=${page.totalPaginas - 1})}">Ultima</a>
+	<span th:if="${not page.hashNext}">Siguiente</span>
+ 	<a th:if="${page.hashNext}" th:href="@{${page.url}(page=${page.paginaActual})}">Siguiente</a>
+ </li>
+ <li>
+ 	<span th:if="${page.last}">Ultima</span>
+ 	<a th:if="${not page.last}" th:href="@{${page.url}(page=${page.totalPages - 1})}">Ultima</a>
  </li>
 </ul>
 </nav>
