@@ -2,26 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <nav th:fragment="paginator">
-<ul>
- <li>
- 	<span th:if="${page.first}">Primera</span>
- 	<a th:if="${not page.first}" th:href="@{${page.url}(page=0)}">Primera</a>
+<ul class="pagination">
+ <li class="page-item">
+ 	<span class="page-link" th:if="${page.first}">Primera</span>
+ 	<a class="page-link" th:if="${not page.first}" th:href="@{${page.url}(page=0)}">Primera</a>
  </li>
- <li>
- 	<span th:if="${not page.hashPrevious}">Anterior</span>
- 	<a th:if="${page.hashPrevious}" th:href="@{${page.url}(page=${page.paginaActual - 2})}">Anterior</a>
+ <li class="page-item">
+ 	<span class="page-link" th:if="${not page.hashPrevious}">Anterior</span>
+ 	<a class="page-link" th:if="${page.hashPrevious}" th:href="@{${page.url}(page=${page.paginaActual - 2})}">Anterior</a>
  </li>
- <li th:each="item : ${page.pageItems}">
- 	<span th:if="${item.blActual}" th:text="${item.numberPage}"></span>
- 	<a th:if="${not item.blActual}" th:href="@{${page.url}(page=${item.numberPage-1})}" th:text="${item.numberPage}"></a>
+ <li th:each="item : ${page.pageItems}" th:class="${item.blActual? 'page-item active': 'page-item'}">
+ 	<span class="page-link" th:if="${item.blActual}" th:text="${item.numberPage}"></span>
+ 	<a class="page-link" th:if="${not item.blActual}" th:href="@{${page.url}(page=${item.numberPage-1})}" th:text="${item.numberPage}"></a>
  </li>
- <li>
-	<span th:if="${not page.hashNext}">Siguiente</span>
- 	<a th:if="${page.hashNext}" th:href="@{${page.url}(page=${page.paginaActual})}">Siguiente</a>
+ <li class="page-item">
+	<span class="page-link" th:if="${not page.hashNext}">Siguiente</span>
+ 	<a class="page-link" th:if="${page.hashNext}" th:href="@{${page.url}(page=${page.paginaActual})}">Siguiente</a>
  </li>
- <li>
- 	<span th:if="${page.last}">Ultima</span>
- 	<a th:if="${not page.last}" th:href="@{${page.url}(page=${page.totalPages - 1})}">Ultima</a>
+ <li class="page-item">
+ 	<span class="page-link" th:if="${page.last}">Ultima</span>
+ 	<a class="page-link" th:if="${not page.last}" th:href="@{${page.url}(page=${page.totalPages - 1})}">Ultima</a>
  </li>
 </ul>
 </nav>
