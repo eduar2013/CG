@@ -1,5 +1,7 @@
 package com.sura.cgapp.model.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sura.cgapp.model.entity.CategoryEntity;
 import com.sura.cgapp.model.entity.SubCategoryEntity;
 import com.sura.cgapp.model.services.SubCategoryServices;
 import com.sura.cgapp.util.paginator.PageRender;
@@ -55,4 +59,17 @@ public class SubCategoryController {
 		flash.addFlashAttribute("success","Subcategoria eliminada correctamente");
 		return "redirect:/subcategories";
 	}
+	
+	
+	@GetMapping(value="/buscarCategoria/{term}", produces= {"application/json"})
+	public @ResponseBody List<CategoryEntity> buscarCategoria(@PathVariable(value="term") String term) {
+		
+		List a = subCategoryServices.findByName(term);
+		System.out.println(a);
+		
+		return a;
+	}
+	
+	
+	
 }

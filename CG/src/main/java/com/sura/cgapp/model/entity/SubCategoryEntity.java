@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="subcategorias")
 public class SubCategoryEntity implements Serializable{
@@ -48,6 +50,7 @@ public class SubCategoryEntity implements Serializable{
 	public CategoryEntity getCategory() {
 		return category;
 	}
+	@JsonIgnore
 	public void setCategory(CategoryEntity categoria) {
 		this.category = categoria;
 	}

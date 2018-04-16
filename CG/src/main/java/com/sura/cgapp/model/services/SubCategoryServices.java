@@ -25,8 +25,6 @@ public class SubCategoryServices {
 		return subCategoryDaoInterface.findOne(id);
 	}
 	
-
-	
 	public List<SubCategoryEntity> findAll(){
 		return (List<SubCategoryEntity>) subCategoryDaoInterface.findAll();
 	}
@@ -45,5 +43,9 @@ public class SubCategoryServices {
 	
 	public List<CategoryEntity> getCategory() {
 		return  (List<CategoryEntity>)categoryDaoInterface.findAll();
+	}
+	
+	public List<CategoryEntity> findByName(String term) {
+		return  categoryDaoInterface.findByName(term);
 	}
 }

@@ -29,6 +29,11 @@
                             th:utext="${categ.name}"/>
                   </select>
 			</div>
+			<div class="form-group">
+			<label for="buscar_categoria">Buscar Categoria</label>
+			<input type="text" class="form-control" name="buscar_categoria" id="buscar_categoria"/>
+			</div>
+			
 			<button type="submit" class="btn btn-primary">Crear</button>
 			
 			<input type="hidden" th:field="*{id}"/>
@@ -38,6 +43,6 @@
 </div>
 
 <footer th:replace="layout/layout :: footer"></footer>
-
+<script th:replace="js/categorias_complete :: javascript"></script>
 </body>
 </html>
