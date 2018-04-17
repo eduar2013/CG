@@ -8,8 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.sura.cgapp.model.dao.CategoryDaoInterface;
+import com.sura.cgapp.model.dao.ProductoDaoInterface;
 import com.sura.cgapp.model.dao.SubCategoryDaoInterface;
 import com.sura.cgapp.model.entity.CategoryEntity;
+import com.sura.cgapp.model.entity.Producto;
 import com.sura.cgapp.model.entity.SubCategoryEntity;
 
 @Service
@@ -20,6 +22,9 @@ public class SubCategoryServices {
 	
 	@Autowired
 	CategoryDaoInterface categoryDaoInterface;
+	
+	@Autowired
+	ProductoDaoInterface productoDaoInterface;
 	
 	public SubCategoryEntity findOne(Integer id) {
 		return subCategoryDaoInterface.findOne(id);
