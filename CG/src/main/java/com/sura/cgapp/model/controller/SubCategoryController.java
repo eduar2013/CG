@@ -71,6 +71,15 @@ public class SubCategoryController {
 		return a;
 	}
 	
+	@GetMapping(value="/buscarSubCategoria/{term}", produces= {"application/json"})
+	public @ResponseBody List<SubCategoryEntity> buscarSubCategoria(@PathVariable(value="term") String term) {
+		
+		List a = subCategoryServices.findByName(term);
+		System.out.println(a);
+		
+		return a;
+	}
+	
 	
 	
 }

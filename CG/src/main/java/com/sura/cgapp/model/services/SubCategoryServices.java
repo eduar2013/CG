@@ -11,7 +11,6 @@ import com.sura.cgapp.model.dao.CategoryDaoInterface;
 import com.sura.cgapp.model.dao.ProductoDaoInterface;
 import com.sura.cgapp.model.dao.SubCategoryDaoInterface;
 import com.sura.cgapp.model.entity.CategoryEntity;
-import com.sura.cgapp.model.entity.Producto;
 import com.sura.cgapp.model.entity.SubCategoryEntity;
 
 @Service
@@ -50,7 +49,11 @@ public class SubCategoryServices {
 		return  (List<CategoryEntity>)categoryDaoInterface.findAll();
 	}
 	
-	public List<CategoryEntity> findByName(String term) {
-		return  categoryDaoInterface.findByName(term);
+	public List<SubCategoryEntity> findByName(String term) {
+		return  subCategoryDaoInterface.findByName(term);
+	}
+	
+	public List<SubCategoryEntity> getSubCategories() {
+		return  (List<SubCategoryEntity>)subCategoryDaoInterface.findAll();
 	}
 }

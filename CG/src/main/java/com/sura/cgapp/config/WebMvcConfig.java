@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.sura.cgapp.web.formatter.CategoryEntityFormatter;
+import com.sura.cgapp.web.formatter.SubCategoryEntityFormatter;
 
 @Configuration
 @ComponentScan("com.sura")
@@ -16,6 +17,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addFormatters(FormatterRegistry formatterRegistry) {
         formatterRegistry.addFormatter(new CategoryEntityFormatter());
+        formatterRegistry.addFormatter(new SubCategoryEntityFormatter());
     }
 	
 	@Override
