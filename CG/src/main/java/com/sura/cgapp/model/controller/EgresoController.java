@@ -12,7 +12,7 @@ import com.sura.cgapp.model.services.EgresoServices;
 import com.sura.cgapp.model.services.SubCategoryServices;
 
 @Controller
-@RequestMapping("/egreso")
+@RequestMapping({"/","/egreso"})
 public class EgresoController {
 	
 	@Autowired
@@ -21,7 +21,7 @@ public class EgresoController {
 	@Autowired
 	SubCategoryServices subcategoryServices;
 	
-	@GetMapping("/listarEgresos")
+	@GetMapping({"/","/listarEgresos"})
 	public String listarEgresos(Model model) {
 		model.addAttribute("egreso", new Egreso());
 		model.addAttribute("egresosList",egresoServices.findAll());
@@ -32,7 +32,6 @@ public class EgresoController {
 	
 	@PostMapping("/grabarEgreso")
 	public String grabarEgreso(Egreso egreso,Model model) {
-		System.out.println(egreso.getValor());
 		egresoServices.grabarEgreso(egreso);
 		return "redirect:/egreso/listarEgresos";
 	}
