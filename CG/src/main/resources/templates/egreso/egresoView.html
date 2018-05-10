@@ -5,23 +5,23 @@
 
 	<header th:replace="layout/layout :: header"></header>
 	<div class="card-deck py-4 mx-4">
-		<div class="card">
+		<div class="card ">
 			<div class="card-header text-center">
 				<span>Ingresar Gasto</span>
 			</div>
 			<div class="card-body">
 				<form action="#" th:action="@{/egreso/grabarEgreso}" th:object="${egreso}" method="post">
-					<div class="form-group">
+					<div class="form-group col-sm-6">
 						<label for="buscar_subcategoria">Motivo</label>
-						<input type="text" class="form-control" name="buscar_subcategoria" id="buscar_subcategoria"/>
+						<input type="text" class="form-control form-control-sm " name="buscar_subcategoria" id="buscar_subcategoria"/>
 					</div>
-					<div class="form-group">
+					<div class="form-group col-sm-6">
 						<label for="valor">Valor</label>
-						<input type="text" class="form-control" id="valor" th:field="*{valor}" placeholder="valor"/>
+						<input type="text" class="form-control form-control-sm" id="valor" th:field="*{valor}" placeholder="valor"/>
 					</div>
-					<div class="form-group">
+					<div class="form-group col-sm-6">
 						<label for="fechaEgreso">Fecha</label>						
-						<input type="text" class="form-control" name="fechaEgreso" id="fechaEgreso" th:field="*{fechaEgreso}"/>
+						<input type="text" class="form-control form-control-sm" name="fechaEgreso" id="fechaEgreso" th:field="*{fechaEgreso}"/>
 						<div id="fechaEg"  ></div>
 					</div>
 					
