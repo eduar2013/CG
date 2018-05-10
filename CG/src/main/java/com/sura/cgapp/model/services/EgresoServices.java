@@ -21,4 +21,8 @@ public class EgresoServices{
 	public void grabarEgreso(Egreso egreso) {
 		egresoDao.save(egreso);
 	}
+	
+	public void deleteEgreso(long id){
+		egresoDao.delete(egresoDao.findOne(id));
+	}
 }

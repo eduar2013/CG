@@ -1,9 +1,11 @@
 package com.sura.cgapp.model.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,6 +35,13 @@ public class EgresoController {
 	@PostMapping("/grabarEgreso")
 	public String grabarEgreso(Egreso egreso,Model model) {
 		egresoServices.grabarEgreso(egreso);
+		return "redirect:/egreso/listarEgresos";
+	}
+	
+	@GetMapping(value="/eliminarGasto/{id}")
+	public String eliminarGasto(@PathVariable(value="id") long id, Model model) {
+		egresoServices.deleteEgreso(id);
+		model.addAttribute("success","Egreso eliminado correctamente");
 		return "redirect:/egreso/listarEgresos";
 	}
 

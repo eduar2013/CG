@@ -41,7 +41,7 @@
 					class="table table-responsive-sm table-hover table-bordered table-sm">
 					<thead class="thead-dark">
 						<tr>
-							<th scope="col">Subcategoria</th>
+							<th scope="col">Motivo</th>
 							<th scope="col">Valor</th>
 							<th scope="col">Fecha Gasto</th>
 							<th scope="col">Editar</th>
@@ -51,10 +51,10 @@
 					<tbody th:each="egreso : ${egresosList}">
 						<tr>
 							<td th:text="${egreso.subcategoria.name}"></td>
-							<td th:text="${egreso.valor}"></td>
+							<td><input type="text" th:value="${egreso.valor}" style="border:none" th:onchange="@{/egreso/actualizarValor/} + ${egreso.id}"/></td>
 							<td th:text="${egreso.fechaEgreso}"></td>
 							<td></td>
-							<td></td>
+							<td><a th:href="@{/egreso/eliminarGasto/} + ${egreso.id}" class="btn btn-danger btn-sm">Eliminar</a></td>
 						</tr>
 					</tbody>
 				</table>
