@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.sura.cgapp.model.entity.CategoryEntity;
-import com.sura.cgapp.model.entity.Producto;
 import com.sura.cgapp.model.entity.SubCategoryEntity;
 import com.sura.cgapp.model.services.SubCategoryServices;
 import com.sura.cgapp.util.paginator.PageRender;
@@ -63,23 +61,15 @@ public class SubCategoryController {
 	
 	
 	@GetMapping(value="/buscarCategoria/{term}", produces= {"application/json"})
-	public @ResponseBody List<CategoryEntity> buscarCategoria(@PathVariable(value="term") String term) {
+	public @ResponseBody List<SubCategoryEntity> buscarCategoria(@PathVariable(value="term") String term) {
 		
-		List a = subCategoryServices.findByName(term);
-		System.out.println(a);
-		
+		List<SubCategoryEntity> a = subCategoryServices.findByName(term);
 		return a;
 	}
 	
 	@GetMapping(value="/buscarSubCategoria/{term}", produces= {"application/json"})
 	public @ResponseBody List<SubCategoryEntity> buscarSubCategoria(@PathVariable(value="term") String term) {
-		
-		List a = subCategoryServices.findByName(term);
-		System.out.println(a);
-		
+		List<SubCategoryEntity> a = subCategoryServices.findByName(term);
 		return a;
 	}
-	
-	
-	
 }
