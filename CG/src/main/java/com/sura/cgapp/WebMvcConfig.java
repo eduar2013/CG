@@ -1,4 +1,4 @@
-package com.sura.cgapp.config;
+package com.sura.cgapp;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

@@ -26,7 +26,7 @@ public class SubCategoryServices {
 	ProductoDaoInterface productoDaoInterface;
 	
 	public SubCategoryEntity findOne(Integer id) {
-		return subCategoryDaoInterface.findOne(id);
+		return subCategoryDaoInterface.findById(id).orElse(null);
 	}
 	
 	public List<SubCategoryEntity> findAll(){

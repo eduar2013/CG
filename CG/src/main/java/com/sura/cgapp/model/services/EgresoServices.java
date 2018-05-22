@@ -25,7 +25,7 @@ public class EgresoServices{
 	}
 	
 	public void deleteEgreso(long id){
-		egresoDao.delete(egresoDao.findOne(id));
+		egresoDao.delete(egresoDao.findById(id).orElse(null));
 	}
 	
 	public Page<Egreso> findAll(Pageable pageable){

@@ -19,7 +19,7 @@ public class CategoryServices {
 	}
 	
 	public CategoryEntity findOne(Integer id) {
-		return categoryDao.findOne(id);		
+		return categoryDao.findById(id).orElse(null);	
 	}
 	
 	public void save(CategoryEntity categoryEntity) {

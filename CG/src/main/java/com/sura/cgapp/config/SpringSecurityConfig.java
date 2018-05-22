@@ -5,6 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.sura.cgapp.auth.handler.LoginSuccesHandler;
 
@@ -33,7 +37,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder build) throws Exception{
-		build.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN","USER");
-		build.inMemoryAuthentication().withUser("andres").password("123").roles("USER");
+		PasswordEncoder encoder =
+			     PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		
+		UserDetails user = User.withUsername("admin")
+                .password(encoder.encode("admin"))
+                .roles("ADMIN","USER").build();
+		
+		build.inMemoryAuthentication().withUser(user);
+		
+		user = User.withUsername("jero")
+                .password(encoder.encode("123"))
+                .roles("USER").build();
+		
+		build.inMemoryAuthentication().withUser(user);
 	}
 }
