@@ -5,14 +5,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.sura.cgapp.web.formatter.CategoryEntityFormatter;
 import com.sura.cgapp.web.formatter.SubCategoryEntityFormatter;
 
 @Configuration
 @ComponentScan("com.sura")
-public class WebMvcConfig extends WebMvcConfigurerAdapter {
+public class WebMvcConfig implements WebMvcConfigurer{
 	
 	@Override
 	public void addFormatters(FormatterRegistry formatterRegistry) {
@@ -31,4 +31,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		registry.addViewController("/error_403").setViewName("error_403");
 		
 	}
+	
+	
 }

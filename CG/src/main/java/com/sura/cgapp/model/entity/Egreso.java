@@ -14,6 +14,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "egresos")
 public class Egreso implements Serializable {
@@ -27,6 +29,7 @@ public class Egreso implements Serializable {
 	private Date fechaEgreso;
 
 	@OneToOne
+	@JsonIgnore
 	private SubCategoryEntity subcategoria;
 	
 	private int cantidad;
