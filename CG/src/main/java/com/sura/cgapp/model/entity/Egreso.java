@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -50,7 +51,8 @@ public class Egreso implements Serializable {
 	public void setFechaEgreso(Date fechaEgreso) {
 		this.fechaEgreso = fechaEgreso;
 	}
-
+	
+	@XmlTransient
 	public SubCategoryEntity getSubcategoria() {
 		return subcategoria;
 	}
